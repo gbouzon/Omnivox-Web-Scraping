@@ -13,7 +13,7 @@ config = {
     "vc" : {
         "ovxUrl" : "vaniercollege.omnivox.ca",
         "https_ovxUrl" : "https://vaniercollege.omnivox.ca",
-        "https_ovxUrl2" : "https://www-jac-ovx.omnivox.ca", #not used so it's fine
+        "https_ovxUrl2" : "https://www-van-ovx.omnivox.ca", #used for redirect
         "ovxLoginUrl" : "https://vaniercollege.omnivox.ca/intr/Module/Identification/Login/Login.aspx?ReturnUrl=/intr",
         "headers" :{
             "User-Agent": "Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36"
