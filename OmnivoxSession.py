@@ -34,7 +34,7 @@ class OmnivoxSession:
             data=payload,
             headers=self.cfg["headers"],
             cookies=login_page.cookies,
-            allow_redirects=False #changed to true for tests -> traceback this fixed 302 error at lea session (line 13)
+            allow_redirects=False
         )
         if login_post_response.status_code != 302:
             return None
@@ -46,7 +46,7 @@ class OmnivoxSession:
             url=self.cfg["https_ovxUrl"] + "/intr/",
             headers=self.cfg["headers"],
             cookies=cookies,
-            allow_redirects=False #changed to true for tests -> tests passed, changed back
+            allow_redirects=False
         )
         homepage_response = doRequest(self.cfg, homepage_response.cookies, homepage_response)
         cookies.update(homepage_response.cookies)
@@ -58,13 +58,12 @@ class OmnivoxSession:
         return self
 
     def getLeaPage(self):
-        print("test response: ", self.homepage_html_query('a[class="raccourci id-service_CVIE   code-groupe_lea"]').attributes)
-        leaURL = self.homepage_html_query('a[class="raccourci id-service_CVIE   code-groupe_lea"]').attr("href") # -> fix this one and run subsequent tests
+        leaURL = self.homepage_html_query('a[class="raccourci id-service_CVIE   code-groupe_lea"]').attr("href")
         lea_page = doRequest(self.cfg, self.cookies, requests.get(
-            url= self.cfg["https_ovxUrl"]+leaURL, #-> this causes an error because of the ref
+            url= self.cfg["https_ovxUrl"]+leaURL,
             headers= self.cfg["headers"],
             cookies=self.cookies,
-            allow_redirects=False #changed to true for tests -> THIS IS THE PROBLEM CHECK QUERY
+            allow_redirects=False
         ))
         self.cookies.update(lea_page.cookies)
         return lea_page
